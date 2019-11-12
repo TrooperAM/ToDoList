@@ -8,3 +8,8 @@ export interface Action {
     type: string,
     payload: any,
 }
+export interface TodoListItem{
+    id: number,
+    info: string,
+    complete: boolean
+}

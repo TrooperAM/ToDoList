@@ -3,15 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { ConnectedRouter } from 'connected-react-router';
+import {ConnectedRouter} from 'connected-react-router';
 import {Provider} from "react-redux";
-import {store,history} from "./store/store";
+import {store, history} from "./store/store";
 import Header from "./components/Header"
+import StickyFooter from "./components/StickyFooter";
+
+
 ReactDOM.render(<Provider store={store}>
-    <ConnectedRouter history={history}>
-        <Header/>
-        <App/>
-    </ConnectedRouter>
+        <ConnectedRouter history={history}>
+            <div className="root">
+                <Header/>
+                <App/>
+                <StickyFooter/>
+            </div>
+        </ConnectedRouter>
     </Provider>
     , document.getElementById('root'));
 

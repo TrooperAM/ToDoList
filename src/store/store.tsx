@@ -1,16 +1,22 @@
-import {createStore, applyMiddleware, combineReducers} from 'redux';
-import { connectRouter } from 'connected-react-router'
+import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
+import {connectRouter, routerMiddleware} from 'connected-react-router'
 import thunk from 'redux-thunk';
 import todos from "../reducers/todos"
-import { createBrowserHistory } from 'history';
-export const history=createBrowserHistory();
-function configureStore(initialState ?:any) {
+import {createBrowserHistory} from 'history';
+
+export const history = createBrowserHistory();
+
+function configureStore(initialState ?: any) {
     return createStore(
         combineReducers({
             router: connectRouter(history),
-            todos}),
+            todos
+        }),
         initialState,
-        applyMiddleware(thunk),
+        compose(applyMiddleware(
+            thunk,
+            routerMiddleware(history))
+        )
     );
 }
 

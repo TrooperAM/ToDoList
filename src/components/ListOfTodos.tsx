@@ -1,25 +1,37 @@
 import React from "react"
 import {mapDispatchToProps, mapStateToProps} from "../commands/todos";
 import {connect} from "react-redux";
-import { Link } from 'react-router-dom'
 import "../App.css"
 import TodoItem from "./TodoItem";
 import {TodoListItem} from "../constants";
-class ListOfTodos extends React.Component{
-    componentDidMount(){
+import {Button, List} from "@material-ui/core";
+import {store} from "../store/store";
+import {push} from "connected-react-router";
+
+class ListOfTodos extends React.Component {
+    componentDidMount() {
         (this.props as any).requestItems();
     }
-    render(){
-        let {todos}=this.props as any;
-        const list=todos.map( (item : TodoListItem): any =>{
+
+    handleClick = () => {
+        store.dispatch(push("/new"));
+    }
+
+    render() {
+        let {todos} = this.props as any;
+        const list = todos.map((item: TodoListItem): any => {
             return <TodoItem key={item.id} id={item.id} complete={item.complete} info={item.info}/>
         });
-        return(<>
-            <div className={"tasks"}>{list}</div>
-            <Link to="/new">
-            <input type={"button"} value={"New task"}/>
-            </Link>
-             </>);
+        return (<>
+            <div className={"tasks"}>
+                <List>
+                    {list}
+                </List>
+            </div>
+            <div className="newTaskButton">
+                <Button variant="contained" color="primary" onClick={() => this.handleClick()}>New task</Button>
+            </div>
+        </>);
     }
 }
 

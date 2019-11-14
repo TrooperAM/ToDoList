@@ -7,9 +7,13 @@ export enum Actions {
 export interface Action {
     type: string,
     payload: any,
+    loading: boolean,
 }
-export interface TodoListItem{
+
+export interface TodoListItem {
     id: number,
     info: string,
-    complete: boolean
+    complete: boolean,
 }
+
+export const MAX_TODO_LENGTH: number = 255;

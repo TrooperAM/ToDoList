@@ -1,12 +1,32 @@
-.tasks{
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-  width: 500px;
-  margin-top: 5%
+.tasks {
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    width: 500px;
+    margin-top: 2%
 }
-.list{
-  width: 100%;
-  max-width: 360px;
-  background-color: inherit;
+
+.list {
+    width: 100%;
+    max-width: 360px;
+    height: 90%;
+    background-color: inherit;
+}
+
+.newTaskButton {
+    margin-top: 100px;
+}
+
+.input {
+    margin-top: 20%
+}
+
+.root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.createButton {
+    margin-top: 2%;
 }

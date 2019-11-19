@@ -34,6 +34,6 @@ export const fakeTodos = () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve({todos: todoList})
-        }, 1000)
+        }, 3000)
     })
 }

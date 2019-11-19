@@ -7,6 +7,7 @@ import {TodoListItem} from "../constants";
 import {Button, List} from "@material-ui/core";
 import {store} from "../store/store";
 import {push} from "connected-react-router";
+import Spinner from "./Spinner";
 
 class ListOfTodos extends React.Component {
     componentDidMount() {
@@ -18,15 +19,17 @@ class ListOfTodos extends React.Component {
     }
 
     render() {
-        let {todos} = this.props as any;
+        let {todos, loading} = this.props as any;
         const list = todos.map((item: TodoListItem): any => {
             return <TodoItem key={item.id} id={item.id} complete={item.complete} info={item.info}/>
         });
         return (<>
             <div className={"tasks"}>
+            {loading ? <Spinner/> :
                 <List>
                     {list}
                 </List>
+            }
             </div>
             <div className="newTaskButton">
                 <Button variant="contained" color="primary" onClick={() => this.handleClick()}>New task</Button>

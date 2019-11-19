@@ -15,5 +15,9 @@ export interface TodoListItem {
     info: string,
     complete: boolean,
 }
+export interface todoProps {
+    todos: number[],
+    requestItems: () => void,
+}
 
 export const MAX_TODO_LENGTH: number = 255;

@@ -4,24 +4,16 @@ import {TodoListItem} from "../constants";
 
 export default (props: TodoListItem) => {
     let {id, info, complete} = props;
-    let arr: number[] = [];
-    const [checked, setChecked] = useState(arr);
+    const [checked, setChecked] = useState(false);
     const handleToggle = (value: number) => () => {
-        const currentIndex = checked.indexOf(value);
-        const newChecked = [...checked];
-        if (currentIndex === -1) {
-            newChecked.push(value);
-        } else {
-            newChecked.splice(currentIndex, 1);
-        }
-        setChecked(newChecked);
+        setChecked(!checked);
     };
     return (<>
         <ListItem key={id} role={undefined} dense button onClick={handleToggle(id)}>
             <ListItemIcon>
                 <Checkbox
                     edge="start"
-                    checked={complete || checked.indexOf(id) !== -1}
+                    checked={complete || checked}
                     tabIndex={-1}
                     disableRipple
                 />
